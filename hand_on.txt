@@ -1,0 +1,4 @@
+resourcegroup="myResourceGroupCLI"
+location="westus3"
+az group create --name $resourcegroup --location $location
+
