@@ -1,0 +1,8 @@
+1) Execute the following commands in Azure Cloud Shell. This will store the Azure Storage Access Key as a secure secret
+
+$AKS_STORAGE_ACCOUNT_NAME="containerstore45535"
+$STORAGE_KEY="Zj3p1TSVcH4OHOsO12xIqjZiHcW+5U+bnut9/uXFkWDiWJzZ0yRC6NgXPQKCEBZ7z8Ck2nFpqlIN+AStUcIvng=="
+ 
+az aks get-credentials --resource-group app-grp --name appcluster
+ 
+kubectl create secret generic azure-secret1 --from-literal=azurestorageaccountname=$AKS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY

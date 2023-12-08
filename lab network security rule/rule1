@@ -1,0 +1,57 @@
+to ping from local to vm 
+1. allow icmp port for nsg on vm
+allow icmp in firewall ,add inbound rule in local to connect the server
+
+#applicaion security group 
+to access   webapp vm from application vm we need to allow in network secuity group with private ip
+
+#to allow multiple webapp 
+we need to create application  security group and allow in security group 
+#azure load balancer
+There are two different sku for load balancer 
+1. basic 
+2. standard
+
+Basic load balancer- no charge but there is not sla and there are other feature like 
+no built in high availablity 
+Standard load balancer- has hourly charges but you get deffernt feature loke high 
+availability via the use of availablity zone
+ # we don/t required public ip addrss on vm when we have load balancer infornt of the vm 
+
+vnet 
+subnet 
+network interface
+security group 
+nat gatway 
+
+****************************************************
+In flexible orchestration mode, you manually create and add a virtual machine of any configuration to the scale set. 
+In uniform orchestration mode, you define a virtual machine model and Azure will generate identical instances based on that model.
+
+load balancer 
+https://learn.microsoft.com/en-us/azure/load-balancer/skus 
+
+
+azure application gatway 
+
+
+
+
+Docker- I have good understanding and cretaed Dockerfile as per dev code  
+kubernets- i have worked on k8s cluster like created the cronjob, app deployment 
+and upgradtion as well but needs traning to expert on k8s.
+git and git hub - have good understanding
+jenkins - I have created script which will build the docker image and push into ecr. and write 
+the script to restrat the pod,
+Ansible- have basic knowledge that how to configure and deploy service need  traning expert level
+promethues and grafana - configure the server alert and databaase alert.
+Terraform - doing hands on lab on azure cloud now 
+
+Docker - good understanding 
+Kubernets- need tranning to expert 
+git and github- good uderstanding 
+jenkins- good understanding and created pipeline
+ansible- basic understanding need traning
+promethues and grafana- configure the alert for server and databaase
+terraform - basic understanding and doing hands on lab on azure 
+

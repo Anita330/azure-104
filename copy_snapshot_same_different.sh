@@ -1,4 +1,4 @@
-# Verified per Raman Kumar as of 2/23/2022
+
 
 # <FullScript>
 #Provide the subscription Id of the subscription where snapshot exists
@@ -8,7 +8,7 @@ sourceSubscriptionId="<subscriptionId>"
 sourceResourceGroupName=mySourceResourceGroupName
 
 #Provide the name of the snapshot
-snapshotName=mySnapshotName
+snapshotName=<snapshotname>
 
 #Set the context to the subscription Id where snapshot exists
 az account set --subscription $sourceSubscriptionId

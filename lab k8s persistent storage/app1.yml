@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blob-app
+  template:
+    metadata:
+      labels:
+        app: blob-app
+    spec:
+      containers:
+      - name: blobapp
+        volumeMounts:
+          - name: storage
+            mountPath: /mnt/disk1
+        image: appregistry700012.azurecr.io/blobapp:latest
+      volumes:
+          - name: storage
+            azureFile:
+              secretName: azure-secret1
+              shareName: data
+              readOnly: false

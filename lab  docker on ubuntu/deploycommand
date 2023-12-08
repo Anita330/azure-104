@@ -1,0 +1,4 @@
+az container create --resource-group container-grp --file appdeployment.yml
+
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-liveness-probe
+https://learn.microsoft.com/en-us/azure/container-instances/container-instances-readiness-probe

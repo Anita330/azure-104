@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blob-app
+  template:
+    metadata:
+      labels:
+        app: blob-app
+    spec:
+      containers:
+      - name: blobapp
+        volumeMounts:
+          - name: storage
+            mountPath: /mnt/disk1
+        image: appregistry700012.azurecr.io/blobapp:latest
+      volumes:
+          - name: storage
+            azureDisk:
+              kind: Managed
+              diskName: clusterdisk
+              diskURI: /subscriptions/6912d7a0-bc28-459a-9407-33bbba641c07/resourceGroups/MC_kubernetes-grp_appcluster_northeurope/providers/Microsoft.Compute/disks/clusterdisk  

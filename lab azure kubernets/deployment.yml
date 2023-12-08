@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqlapp-deployment
+  labels:
+    app: sqlapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlapp
+  template:
+    metadata:
+      labels:
+        app: sqlapp
+    spec:
+      containers:
+      - name: sqlapp
+        image: appregistry10002313.azurecr.io/sqlapp:latest
+        ports:
+        - containerPort: 80

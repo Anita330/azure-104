@@ -1,4 +1,78 @@
+#to create the resource group using cli 
 resourcegroup="myResourceGroupCLI"
 location="westus3"
 az group create --name $resourcegroup --location $location
+ "id": "/subscriptions/42586c24-ddce-4fa1-8c13-82c36f97c4ce/resourceGroups/myResourceGroupCLI",
+  "location": "westus3",
+  "managedBy": null,
+  "name": "myResourceGroupCLI",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+#create cli 
+vmname="myVM"
+username="azureuser"
+az vm create --resource-group $resourcegroup --name $vmname --image Win2022AzureEditionCore --public-ip-sku Standard --admin-username $username
+admin password = ************
+output:
+{
+  "fqdns": "",
+  "id": "/subscriptions/42586c24-ddce-4fa1-8c13-82c36f97c4ce/resourceGroups/myResourceGroupCLI/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "westus3",
+  "macAddress": "60-45-BD-C7-1A-D6",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "20.171.51.222",
+  "resourceGroup": "myResourceGroupCLI",
+  "zones": ""
+}
+
+#data disk snapshot 
+#Provide the subscription Id of the subscription where you want to create Managed Disks
+subscriptionId="Free Trial"
+
+#Provide the name of your resource group
+resourceGroupName=rg
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+snapshotName=mySnapshotName
+
+#Provide the name of the new Managed Disks that will be create
+diskName=myDiskName
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+diskSize=128
+
+#Provide the storage type for Managed Disk. Acceptable values are Standard_LRS, Premium_LRS, PremiumV2_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, and StandardSSD_ZRS.
+storageType=Premium_LRS
+
+#Required for Premium SSD v2 and Ultra Disks
+#Provide the Availability Zone you'd like the disk to be created in, default is 1
+zone=1
+
+#Set the context to the subscription Id where Managed Disk will be created
+az account set --subscription $subscriptionId
+
+#Get the snapshot Id 
+snapshotId=$(az snapshot show --name $snapshotName --resource-group $resourceGroupName --query [id] -o tsv)
+
+#Create a new Managed Disks using the snapshot Id
+#Note that managed disk will be created in the same location as the snapshot
+#If you're creating a Premium SSD v2 or an Ultra Disk, add "--zone $zone" to the end of the command
+az disk create --resource-group $resourceGroupName --name $diskName --sku $storageType --size-gb $diskSize --source $snapshotId
+
+#how to attach disk on windows vm 
+az account set --subscription $subscriptionId
+az disk show -n $diskName -g $resourceGroupName --query [completionPercent] -o tsv
+
+#Create VM by attaching existing managed disks as OS
+az vm create --name $virtualMachineName --resource-group $resourceGroupName --attach-os-disk $managedDiskId --os-type $osType
+
+
+#
+
 

@@ -1,0 +1,9 @@
+to connect with site to site vpn , need to create virtual network gatway
+https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings
+
+
+https://learn.microsoft.com/en-us/azure/virtual-wan/connect-virtual-network-gateway-vwan
+
+
+https://learn.microsoft.com/en-us/azure/expressroute/expressroute-circuit-peerings
+

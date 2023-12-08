@@ -1,0 +1,27 @@
+#image build
+docker build -t blobapp .
+#tag repo
+docker tag blobapp appregistry10002313.azurecr.io/blobapp
+#push the image
+docker push appregistry10002313.azurecr.io/blobapp
+
+ First get the credentials of the Kubernetes cluster
+
+az aks get-credentials --resource-group app-grp --name appcluster
+
+2) Then get the details of the cluster
+
+az aks show --resource-group app-grp --name appcluster --query nodeResourceGroup -o tsv
+
+3) Create a disk for the cluster
+
+az disk create --resource-group MC_app-grp_appcluster_northeurope --name clusterdisk --size-gb 20 --query id --output tsv
+
+
+5) For mounting the disk onto a Linux VM
+
+a) lsblk
+
+b) mkdir data1
+
+c) sudo mount /dev/sdc data1

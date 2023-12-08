@@ -1,0 +1,22 @@
+Publishing to the Azure Container Registry - Resources
+The following commands can be used as a reference to the previous chapter
+
+1. Install the Azure command line interface
+
+https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+
+2. Login into Azure
+
+sudo az login
+
+3. Login in your repository - Mention the name, user name and password accordingly.
+
+sudo az acr login --name  --username --password
+
+4. Tag your repository
+
+sudo docker tag sqlapp appregistry10002313.azurecr.io/sqlapp
+
+5. Push the image to the repository
+
+sudo docker push appregistry10002313.azurecr.io/sqlapp

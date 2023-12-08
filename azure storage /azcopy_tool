@@ -1,0 +1,16 @@
+1.  To create a container
+
+azcopy make "https://appstore35545.blob.core.windows.net/data?sv=2021-06-08&ss=b&srt=sco&sp=rwdlaciytfx&se=2023-01-27T21:10:21Z&st=2023-01-27T13:10:21Z&spr=https&sig=OCyNZlTtxO5aFpppfnk6WLEXW%2BqouaTFavnIFg67zXM%3D"
+
+
+
+2. To upload a file
+
+azcopy copy app.yml "https://appstore35545.blob.core.windows.net/data/app.yml?sv=2021-06-08&ss=b&srt=sco&sp=rwdlaciytfx&se=2023-01-27T21:10:21Z&st=2023-01-27T13:10:21Z&spr=https&sig=OCyNZlTtxO5aFpppfnk6WLEXW%2BqouaTFavnIFg67zXM%3D"
+
+
+
+3. Download blob data
+
+azcopy copy "https://appstore35545.blob.core.windows.net/data/app.yml?sv=2021-06-08&ss=b&srt=sco&sp=rwdlaciytfx&se=2023-01-27T21:10:21Z&st=2023-01-27T13:10:21Z&spr=https&sig=OCyNZlTtxO5aFpppfnk6WLEXW%2BqouaTFavnIFg67zXM%3D" "app.yml"
+
